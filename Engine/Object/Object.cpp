@@ -7,7 +7,6 @@ Object::Object()
     
     this->shape = RECTANGLE;
     this->color = Color(255, 255, 255, 255);
-    AddComponent(input);
 }
 
 Object::Object(FVector l, FVector s)
@@ -17,10 +16,7 @@ Object::Object(FVector l, FVector s)
     
     this->shape = RECTANGLE;
     this->color = Color(255, 255, 255, 255);
-    AddComponent(input);
 }
-
-//void Object::AddComponent(Component* c) { this->components.push_back(c); }
 
 Object::~Object() {}
 Transform Object::GetObjectTransform()  { return this->transform; }

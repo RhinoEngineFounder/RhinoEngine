@@ -45,7 +45,6 @@ public:
 
 protected:
     Transform transform;
-    InputComponent* input;
     std::vector<Component*> components;
 
 private:
