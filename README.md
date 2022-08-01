@@ -65,7 +65,7 @@ in a cmd.
 
 With this you should be able to controll your character and move it to the left and right.
 I'll continue working on the input system, and maybe stream 
-my workflow on twitch at twitch.tv/theenderpod93
+my workflow on twitch at https://www.twitch.tv/theenderpod93
 
 If you want to listen to the same music as I do when I code,
 here is the link to my playlist: https://music.youtube.com/playlist?list=PLGYcHPtvAljUIQ_AX8MhWAoznyaK3N44K
