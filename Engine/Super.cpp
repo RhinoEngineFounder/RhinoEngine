@@ -19,36 +19,23 @@ void Super::Run()
     float deltaTime;
     bool isRunning = true;
 
-    // Input
     InputInfo input;
-
+    
     while(isRunning)
     {
-        last = now;
-        now = SDL_GetTicks();
-        deltaTime = (float)((now - last) *1000 / (float)SDL_GetPerformanceFrequency());
+        deltaTime = ComputeDeltaTime(last, now);
 
         while(SDL_PollEvent(&input) != 0)
         {
             if(input.type == SDL_QUIT) isRunning = false;
+            
             for(Object* e : currentLVL->GetEntites())
             {
-                if(e->GetComponent<InputComponent>())
-                {
-                    MESSAGE("Detected input component!")
-                    e->GetComponent<InputComponent>()->SetInput(&input);
-                }
+                e->Tick(deltaTime, &input);
+                renderer->RenderObject(e);
             }
-        }
-
-        for(Object* e : currentLVL->GetEntites())
-        {
-            e->Tick(deltaTime);
-            renderer->RenderObject(e);
         }
 
         renderer->UpdateScreen();
     }
 }
-
-//GameLayer* Super::GetCurrentLayer() { return currentLVL; }

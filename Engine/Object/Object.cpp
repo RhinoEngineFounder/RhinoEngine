@@ -20,7 +20,7 @@ Object::Object(FVector l, FVector s)
     AddComponent(input);
 }
 
-void Object::AddComponent(Component* c) { this->components.push_back(c); }
+//void Object::AddComponent(Component* c) { this->components.push_back(c); }
 
 Object::~Object() {}
 Transform Object::GetObjectTransform()  { return this->transform; }
