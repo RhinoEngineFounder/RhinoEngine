@@ -1,8 +1,12 @@
 # RhinoEngine
+## Why I want to make a game engine
+
 Simple 2D Game engine, made by a 12 year old student in his freetime.
 
 I decided to write a Simple 2D game engine in C++ using SDL to make small games and as
 practice to improve my coding skills. 
+
+## How to make a simple game
 
 You can just code your own simple Character, by including the Engine/Object/Object.h file
 in your Class, and copy this bit of Code:
@@ -48,6 +52,8 @@ void YourCharacterName::Tick(float deltaTime, InputInfo* input)
         transform.location.x -= 10;
 }
 ```
+## How to compile your project
+
 To compile your little game, just use the Makefile.
 To use it, just type: 
 ```
@@ -55,6 +61,11 @@ make MAINFILE=main.cpp NAME=game Run
 ```
 in a cmd.
 
+## Social Media
+
 With this you should be able to controll your character and move it to the left and right.
 I'll continue working on the input system, and maybe stream 
 my workflow on twitch at twitch.tv/theenderpod93
+
+If you want to listen to the same music as I do when I code,
+here is the link to my playlist: https://music.youtube.com/playlist?list=PLGYcHPtvAljUIQ_AX8MhWAoznyaK3N44K
