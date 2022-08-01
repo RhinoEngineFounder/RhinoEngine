@@ -1,25 +1,27 @@
 #pragma once
+#include <SDL2/SDL.h>
 #include "Component.h"
-#include "../Events/Input.h"
 
-typedef SDL_KeyCode KeyCode;
+typedef SDL_KeyCode     KeyCode;
+typedef SDL_Event       InputInfo;
 
-class InputComponent : public Component
+/*class InputComponent : public Component
 {
 public:
     InputComponent();
     ~InputComponent();
 
-    void SetInput(InputInfo* inpt) { this->input = input; }
+    void SetInput(InputInfo* inpt) 
+    { 
+        lastInput = input;
+        input = inpt; 
+    }
 
     InputInfo* GetInput() { return input; }
     InputInfo* GetLastInput() { return lastInput; }
 
     bool isKeyPressed(KeyCode code)
     {
-        if(input == nullptr)
-            return false;
-
         if(input->key.keysym.sym == code)
             return true;
         return false;
@@ -38,4 +40,4 @@ public:
 private:
     InputInfo* input;
     InputInfo* lastInput;
-};
+};*/
