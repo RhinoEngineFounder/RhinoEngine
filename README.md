@@ -48,6 +48,13 @@ void YourCharacterName::Tick(float deltaTime, InputInfo* input)
         transform.location.x -= 10;
 }
 ```
+To compile your little game, just use the Makefile.
+To use it, just type: 
+```
+make MAINFILE=main.cpp NAME=game Run
+```
+in a cmd.
+
 With this you should be able to controll your character and move it to the left and right.
 I'll continue working on the input system, and maybe stream 
 my workflow on twitch at twitch.tv/theenderpod93
