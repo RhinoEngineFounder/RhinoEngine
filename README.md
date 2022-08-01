@@ -38,6 +38,8 @@ int main()
     Super* gameSuper;
     gameSuper.Initiate(demoLayer, "Demo game made with RhinoEngine");
     gameSuper.Run();
+    
+    return EXIT_SUCCESS;
 }
 ```
 If you compile everything you should see a window with blue background
