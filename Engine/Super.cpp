@@ -25,7 +25,17 @@ void Super::Run()
     {
         deltaTime = ComputeDeltaTime(last, now);
 
-        while(SDL_PollEvent(&input) != 0)
+        if(!SDL_PollEvent(&input))
+        {
+            for(Object* e : currentLVL->GetEntites())
+            {
+                e->Tick(deltaTime, &input);
+                usleep(10000);
+                renderer->RenderObject(e);
+            }
+        }
+
+        while(SDL_PollEvent(&input))
         {
             if(input.type == SDL_QUIT) isRunning = false;
             

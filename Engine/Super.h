@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <unistd.h>
 #include "Game/GameLayer.h"
 #include "Renderer/Renderer.h"
 #include "Debug.h"

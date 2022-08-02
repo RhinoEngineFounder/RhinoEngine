@@ -63,7 +63,7 @@ void Renderer::RenderObject(Object *entity)
         break;
 
     case CIRCLE:
-        DrawCircle(entity->GetObjectLocation().x + (entity->GetObjectScale().x / 2), entity->GetObjectLocation().y, entity->GetObjectScale().x);
+        DrawCircle(entity->GetObjectLocation().x + (entity->GetObjectScale().x / 2), entity->GetObjectLocation().y + (entity->GetObjectScale().y / 2), entity->GetObjectScale().x);
         break;
 
     case TRIANGLE:
