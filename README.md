@@ -1,7 +1,6 @@
 # RhinoEngine
-## Why I want to make a game engine
-
 Simple 2D Game engine, made by a 12 year old student in his freetime.
+## Why I want to make a game engine
 
 I decided to write a Simple 2D game engine in C++ using SDL to make small games and as
 practice to improve my coding skills. 
