@@ -18,6 +18,7 @@ public:
 
 private:
     inline SDL_Rect Transform_To_Rect(Transform);
+    void DrawCircle(int, int, int);
 
     int m_ScreenWidth;
     int m_ScreenHeight;
