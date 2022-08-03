@@ -70,3 +70,5 @@ my workflow on twitch at https://www.twitch.tv/theenderpod93
 
 If you want to listen to the same music as I do when I code,
 here is the link to my playlist: https://music.youtube.com/playlist?list=PLGYcHPtvAljUIQ_AX8MhWAoznyaK3N44K
+
+If you want annoying tweets, here is my twitter account: https://twitter.com/TheNerdRoom3
