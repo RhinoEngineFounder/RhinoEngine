@@ -18,12 +18,13 @@ Renderer::~Renderer()
     SDL_Quit();
 }
 
-void Renderer::InitRenderer(Color c)
+void Renderer::InitRenderer(Color c)//, Camera *cam)
 {
     // Creating Window and Renderer
     this->m_Window = SDL_CreateWindow(this->m_WindowName, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_ScreenWidth, m_ScreenHeight, SDL_WINDOW_SHOWN);
     this->m_Renderer = SDL_CreateRenderer(m_Window, -1, SDL_RENDERER_ACCELERATED);
     this->m_Surface = SDL_GetWindowSurface(m_Window);
+    //this->m_Camera = cam;
 
     // Error checking
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
@@ -46,6 +47,9 @@ void Renderer::InitRenderer(Color c)
 void Renderer::RenderObject(Object *entity)
 {
     SDL_RenderClear(m_Renderer);
+    //if (entity->GetObjectLocation().x <= m_Camera->position.x || entity->GetObjectLocation().x >= m_Camera->position.x || entity->GetObjectLocation().y <= m_Camera->position.y || entity->GetObjectLocation().y >= m_Camera->position.y)
+    //    return;
+
     SDL_SetRenderDrawColor(m_Renderer,
                            entity->GetColor().r,
                            entity->GetColor().g,

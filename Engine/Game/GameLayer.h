@@ -3,10 +3,14 @@
 #include <vector>
 #include <algorithm>
 #include "../Object/Object.h"
+#include "Camera.h"
 
 class GameLayer
 {
 public:
+    GameLayer();
+    ~GameLayer();
+
     void AddObject(Object*);
     void RemoveObject(Object*);
     void RemoveNthObject(int);
@@ -19,6 +23,7 @@ public:
     Object* GetFirstObject();
 
     Color color;
+    //Camera* cam;
 
 private:
     std::vector<Object*> m_Entities;

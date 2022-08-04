@@ -6,6 +6,8 @@
 #include "Renderer/Renderer.h"
 #include "Debug.h"
 
+#define UPDATE_DELAY 10000
+
 class Super
 {
 public:

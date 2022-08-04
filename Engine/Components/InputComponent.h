@@ -3,7 +3,7 @@
 #include "Component.h"
 
 typedef SDL_KeyCode     KeyCode;
-typedef SDL_Event       InputInfo;
+typedef const Uint8*       InputInfo;
 
 /*class InputComponent : public Component
 {

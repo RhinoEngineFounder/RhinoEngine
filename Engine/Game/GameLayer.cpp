@@ -1,5 +1,8 @@
 #include "GameLayer.h"
 
+GameLayer::GameLayer()  {}
+GameLayer::~GameLayer() {}
+
 void GameLayer::AddObject(Object* entity)
 {
     this->m_Entities.push_back(entity);
@@ -17,12 +20,12 @@ void GameLayer::RemoveObject(Object* entity)
 /*void GameLayer::RemoveNthObject(int i)
 {
     this->m_Entities.erase(std::next(m_Entities.begin(), 1));
-}
-
-Object* GameLayer::GetNthObject(int) 
-{
-
 }*/
+
+Object* GameLayer::GetNthObject(int n)
+{
+    return this->m_Entities.at(n);
+}
 
 int GameLayer::GetNumberOfEntities() { return m_Entities.size(); }
 

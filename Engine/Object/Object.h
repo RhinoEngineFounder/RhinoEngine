@@ -26,7 +26,8 @@ public:
     void SetColor(Color);
 
     virtual void Awake() {}
-    virtual void Tick(float deltaTime, InputInfo* input) {}
+    virtual void Tick(float deltaTime, InputInfo input) {}
+    virtual void End() {}
 
     template <class CompType>
     CompType *GetComponent()
@@ -42,6 +43,7 @@ public:
     }
 
     inline void AddComponent(Component* c) { components.push_back(c); }
+
 
 protected:
     Transform transform;

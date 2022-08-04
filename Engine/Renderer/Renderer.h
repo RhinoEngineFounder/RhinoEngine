@@ -4,6 +4,7 @@
 
 #include "../Object/Object.h"
 #include "../Material/Color.h"
+#include "../Game/Camera.h"
 
 class Renderer
 {
@@ -28,4 +29,5 @@ private:
     SDL_Window* m_Window;
     SDL_Renderer* m_Renderer;
     SDL_Surface* m_Surface;
+    //Camera* m_Camera;
 };
