@@ -57,7 +57,7 @@ void YourCharacterName::Tick(float deltaTime, InputInfo* input)
 ## How to compile your project
 
 To compile your little game, just use the Makefile.
-To use it, just type: 
+To use it, just enter this in a console (Of course in the right directory): 
 ```
 make MAINFILE=main.cpp NAME=game Run
 ```
