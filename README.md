@@ -18,6 +18,7 @@ public:
   
     virtual void Awake() override;
     virtual void Tick(float deltaTime, InputInfo* input) override;
+    virtual void End() override;
 }
 ```
 Then, you need a main file. To get everything runnin' you need to include Engine/Game/GameLayer.h.
@@ -46,11 +47,11 @@ and a box, you can control, if you do something like this in your character:
 ```
 void YourCharacterName::Tick(float deltaTime, InputInfo* input)
 {
-    if(input->key.keysym.sym == SDLK_d)
-        transform.location.x += 10;
+    if(input[SDL_SCANCODE_D])
+        transform.location.x += 0.1 * deltaTime;
         
-    if(input->key.keysym.sym == SDLK_a)
-        transform.location.x -= 10;
+    if(input[SDL_SCANCODE_A])
+        transform.location.x -= 0.1;
 }
 ```
 ## How to compile your project
