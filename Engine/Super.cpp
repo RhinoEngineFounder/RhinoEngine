@@ -17,22 +17,20 @@ void Super::Run()
     uint now = SDL_GetPerformanceCounter();
     uint last = 0;
     float deltaTime;
+
+    Input input;
+
     bool isRunning = true;
-    
     while(isRunning)
     {
         deltaTime = ComputeDeltaTime(last, now);
 
-        SDL_Event input;
-        while(SDL_PollEvent(&input))
-        {
-            if(input.type == SDL_QUIT) isRunning = false;
-        }
+        if(Input::isKeyPressed(SDL_QUIT))
+            isRunning = false;
 
-        const Uint8* state = SDL_GetKeyboardState(nullptr);
         for(Object* e : currentLVL->GetEntites())
         {
-            e->Tick(deltaTime, state);
+            e->Tick(deltaTime);
             renderer->RenderObject(e);
         }
 

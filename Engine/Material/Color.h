@@ -15,5 +15,5 @@ public:
     
     ~Color() {}
 
-    unsigned int r, g, b, a;
+    Uint8 r, g, b, a;
 };

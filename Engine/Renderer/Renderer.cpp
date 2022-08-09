@@ -71,7 +71,9 @@ void Renderer::RenderObject(Object *entity)
         break;
 
     case TRIANGLE:
-        // SDL_RenderDrawLine();
+        std::cerr << "Triangles are currently not available, please choose another shape!\n";
+        std::terminate();
+        DrawTriangle(entity);
         break;
 
     default:
@@ -131,4 +133,29 @@ void Renderer::DrawCircle(int centreX, int centreY, int radius)
             error += (tx - diameter);
         }
     }
+}
+
+void Renderer::DrawTriangle(Object* e)
+{
+    SDL_Vertex vertices[3];
+    SDL_Color color{
+        e->GetColor().r,
+        e->GetColor().g,
+        e->GetColor().b,
+        e->GetColor().a
+    };
+
+    vertices[1].position.x = e->GetObjectLocation().x + e->GetObjectScale().x / 2;
+    vertices[1].position.y = e->GetObjectLocation().y - e->GetObjectLocation().y / 2;
+    vertices[1].color = color;
+    
+    vertices[2].position.x = e->GetObjectLocation().x - e->GetObjectScale().x / 2;
+    vertices[2].position.y = e->GetObjectLocation().y + e->GetObjectScale().y / 2;
+    vertices[2].color = color;
+
+    vertices[3].position.x = e->GetObjectLocation().x;
+    vertices[3].position.y = e->GetObjectLocation().y - e->GetObjectScale().y / 2;
+    vertices[3].color = color;
+
+    SDL_RenderGeometry(m_Renderer, nullptr, vertices, 3, nullptr, 0);
 }

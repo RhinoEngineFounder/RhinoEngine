@@ -5,6 +5,7 @@
 #include "../Object/Object.h"
 #include "../Material/Color.h"
 #include "../Game/Camera.h"
+#include "../Debug.h"
 
 class Renderer
 {
@@ -20,6 +21,7 @@ public:
 private:
     inline SDL_Rect Transform_To_Rect(Transform);
     void DrawCircle(int, int, int);
+    void DrawTriangle(Object*);
 
     int m_ScreenWidth;
     int m_ScreenHeight;
