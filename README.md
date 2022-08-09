@@ -45,12 +45,12 @@ int main()
 If you compile everything you should see a window with blue background
 and a box, you can control, if you do something like this in your character:
 ```
-void YourCharacterName::Tick(float deltaTime, InputInfo* input)
+void YourCharacterName::Tick(float deltaTime)
 {
-    if(input[SDL_SCANCODE_D] && !(transform.location.x >= 540)) // Check input and don't let your Player escape!
+    if(Input::isKeyHeldDown(KeyCode_d) && !(transform.location.x >= 540)) // Check input and don't let your Player escape!
         transform.location.x += 0.1 * deltaTime; // Move your character!
         
-    if(input[SDL_SCANCODE_A])
+    if(Input::isKeyHeldDown(KeyCode_a) && !(transform.location.x <= 0))
         transform.location.x -= 0.1;
 }
 ```
