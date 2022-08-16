@@ -7,7 +7,7 @@ practice to improve my coding skills.
 
 ## How to make a simple game
 
-You can just code your own simple Character, by including the Engine/Object/Object.h file
+You can just code your own simple Character, by including the Engine/Object/Object.h, or the Engine/RhinoCore.h file
 in your Class, and copy this bit of Code:
 ```
 class YouCharacterName : public Object
@@ -21,26 +21,41 @@ public:
     virtual void End() override;
 }
 ```
-Then, you need a main file. To get everything runnin' you need to include Engine/Game/GameLayer.h.
-This class is like a level or a scene, where every entity and the background color is stored.
-Then you need to include the Core of the Engine: Engine/Super.h
-First, you need to create a Level in your main function, and bind your character to it,
-and then initialize the engine with your level.
+Then, you need an Application class, and implement the CreateApp function that
+returns an object of your application. First off, include the Engine/RhinoCore.h file,
+and create a class, inheriting from a public Application:
 ```
-int main()
+class TestApp : public Application
 {
-    GameLayer* demoLayer = new GameLayer();    // Create a new Scene/Level
-    demoLayer->color = Color(3, 128, 255, 1);  // Set your background color.
-    
-    YourCharacterName* character = new YourCharacterName();
-    demoLayer->AddObject(character);
-    
-    Super* gameSuper;
-    gameSuper.Initiate(demoLayer, "Demo game made with RhinoEngine");
-    gameSuper.Run();
-    
-    return EXIT_SUCCESS;
+public:
+    TestApp(const AppInfo info&) 
+	: Application(info)
+    {
+    	
+    }
+
+    void Update() override {  }
+};
+
+Application* CreateApp(Arguments args)
+{
+    AppInfo appInfo;
+    appInfo.arguments = args;
+    appInfo.name = "My Rhino Engine Game";
+
+    return new TestApp(appInfo);
 }
+```
+If you compile and run everything, you should see a box in the
+center of the screen with a blue backround. But to add controls,
+you need to create your own level. You have to do something like this in 
+the constructor of your class:
+```
+GameLayer* demoLayer = new GameLayer();
+demoLayer->color = Color(0,0,255,1);
+demoLayer->AddObject(new Player());
+
+SwitchLevel(demoLayer);
 ```
 If you compile everything you should see a window with blue background
 and a box, you can control, if you do something like this in your character:
@@ -59,9 +74,8 @@ void YourCharacterName::Tick(float deltaTime)
 To compile your little game, just use the Makefile.
 To use it, just enter this in a console (Of course in the right directory): 
 ```
-make MAINFILE=main.cpp NAME=game Run
+make MAINFILE=FileWithAppClass.cpp NAME=game Run
 ```
-in a cmd.
 
 ## Social Media
 

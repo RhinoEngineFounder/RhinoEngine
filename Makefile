@@ -1,11 +1,11 @@
 CC=g++
 CLIBS=-Wall -lSDL2
-FILES=Engine/Super.cpp Engine/FVector/FVector.cpp Engine/Object/Object.cpp Engine/Game/GameLayer.cpp Engine/Renderer/Renderer.cpp MyCube.cpp
+FILES=Engine/*/*.cpp Player.cpp
 
-Main: Engine/*.cpp
+Main:
 	$(CC) $(CLIBS) $(FILES) $(MAINFILE) -o $(NAME)
 
-Run: Engine/*.cpp
+Run:
 	$(CC) $(CLIBS) $(FILES) $(MAINFILE) -o $(NAME)
 	./$(NAME)
 	clear

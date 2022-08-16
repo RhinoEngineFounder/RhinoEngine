@@ -4,8 +4,8 @@
 
 #include "../Object/Object.h"
 #include "../Material/Color.h"
-#include "../Game/Camera.h"
-#include "../Debug.h"
+#include "../Layer/Camera.h"
+#include "../Core/Debug.h"
 
 class Renderer
 {
@@ -15,6 +15,7 @@ public:
 
     void InitRenderer(Color);
     void RenderObject(Object*);
+    inline void ChangeColor(Color c) { m_BC = c; }
 
     void UpdateScreen();
 
