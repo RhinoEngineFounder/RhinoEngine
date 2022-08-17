@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Super.h"
+#include "../Layer/Plugin.h"
 #include <SDL2/SDL.h>
 #include <vector>
 
@@ -64,11 +65,11 @@ public:
             deltaTime = Super::ComputeDeltaTime(last, now);
             if(Input::isKeyPressed(SDL_QUIT))
                 isRunning = false;
+                
             master->Update(deltaTime);
-            if(Input::isKeyPressed(SDL_QUIT))
-                isRunning = false;
-            
-            this->Update();
+
+            for(Plugin *p : m_plugins)
+                p->Update(deltaTime);
         }
     }
 
@@ -77,19 +78,37 @@ public:
         master->LoadLevel(layer);
     }
 
-    virtual void Update() {}
-
     void end()
     {
         for(Object* e : currentLevel->GetEntites())
             e->End();
     }
 
+    void AddPlugin(Plugin* plug)
+    {
+        m_plugins.push_back(plug);
+        plug->Awake();
+    }
+
+    void RemovePlugin(Plugin* plug)
+    {
+        if(!plug) return;
+        auto itr = std::find(m_plugins.begin(), m_plugins.end(), plug);
+        if(itr == m_plugins.end()) return;
+        plug->End();
+        m_plugins.erase(itr);
+    }
+
+    inline std::vector<Plugin*> GetPlugins() { return m_plugins; }
+
 protected:
     AppInfo info;
     Super* master = new Super();
     //std::vector<GameLayer*> levels;
     GameLayer *currentLevel;
+
+private:
+    std::vector<Plugin*> m_plugins;
 
     bool isRunning = true;
     friend int ::main(int argc, char** argv);

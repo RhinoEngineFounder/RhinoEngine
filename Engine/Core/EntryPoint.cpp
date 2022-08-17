@@ -8,7 +8,7 @@ int main(int argc, char** argv)
     Arguments args{argc, argv};
     auto app = CreateApp(args);
 
-    std::cout << "Current loaded level: " << app->currentLevel->name;
+    std::cout << "Current loaded level: " << app->currentLevel->name << std::endl;
 
     app->run();
     app->end();
