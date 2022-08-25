@@ -1,8 +1,9 @@
 #pragma once
 #include "../FVector/Transform.h"
 #include "../Components/InputComponent.h"
-#include "../Material/Shape.h"
-#include "../Material/Color.h"
+#include "../Graphics/Shape.h"
+//#include "../Graphics/Texture.h"
+#include "../Graphics/Color.h"
 #include "../Components/Component.h"
 #include <vector>
 
@@ -18,12 +19,14 @@ public:
     FVector GetObjectScale();
     Shape GetShape();
     Color GetColor();
+    //Texture* GetTexture();
 
     void SetObjectTransform(Transform);
     void SetObjectLocation(FVector);
     void SetObjectScale(FVector);
     void SetShape(Shape);
     void SetColor(Color);
+    //void SetTexture(Texture*);
 
     virtual void Awake() {}
     virtual void Tick(float deltaTime) {}
@@ -51,4 +54,5 @@ protected:
 private:
     Shape shape;
     Color color;
+    //Texture* texture;
 };

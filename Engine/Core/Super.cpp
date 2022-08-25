@@ -11,15 +11,17 @@ void Super::Initiate(GameLayer *layer, const char *gameName)
       e->Awake();
 }
 
-void Super::Update(float deltaTime) 
+void Super::Update(Time &time)
 {
+    time.Update();
+
     for (Object *e : currentLVL->GetEntites()) 
     {
-        e->Tick(deltaTime);
-        renderer->RenderObject(e);
+        e->Tick(time.delta());
+        //renderer->RenderObject(e, time);
     }
 
-    renderer->UpdateScreen();
+    renderer->RenderObjects(currentLVL->GetEntites(), time);
 }
 
 void Super::LoadLevel(GameLayer* layer) 

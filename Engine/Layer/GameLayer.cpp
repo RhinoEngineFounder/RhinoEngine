@@ -1,6 +1,10 @@
 #include "GameLayer.h"
 
-GameLayer::GameLayer()  {  }
+GameLayer::GameLayer()  
+{
+    
+}
+
 GameLayer::~GameLayer() {}
 
 void GameLayer::AddObject(Object* entity)

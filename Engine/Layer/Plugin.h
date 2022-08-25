@@ -3,8 +3,8 @@
 class Plugin
 {
 public:
-    Plugin();
-    ~Plugin();
+    Plugin()  {}
+    ~Plugin() {}
 
     virtual void Awake() {}
     virtual void Update(float deltaTime) {}

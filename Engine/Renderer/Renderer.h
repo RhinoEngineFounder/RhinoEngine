@@ -3,9 +3,10 @@
 #include <iostream>
 
 #include "../Object/Object.h"
-#include "../Material/Color.h"
-#include "../Layer/Camera.h"
+#include "../Graphics/Color.h"
+#include "Camera.h"
 #include "../Core/Debug.h"
+#include "../Core/Time.h"
 
 class Renderer
 {
@@ -14,10 +15,11 @@ public:
     ~Renderer();
 
     void InitRenderer(Color);
-    void RenderObject(Object*);
-    inline void ChangeColor(Color c) { m_BC = c; }
+    void RenderObject(Object*, Time);
+    void RenderObjects(std::vector<Object*>, Time&);
+    inline void ChangeColor(Color c) { background = c; }
 
-    void UpdateScreen();
+    void Present();
 
 private:
     inline SDL_Rect Transform_To_Rect(Transform);
@@ -28,9 +30,9 @@ private:
     int m_ScreenHeight;
     const char* m_WindowName;
 
-    Color m_BC; // Background color
+    Color background; // Background color
+    Camera cam;
     SDL_Window* m_Window;
     SDL_Renderer* m_Renderer;
     SDL_Surface* m_Surface;
-    //Camera* m_Camera;
 };

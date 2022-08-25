@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <string>
 #include "../Object/Object.h"
-#include "Camera.h"
+#include "../Renderer/Camera.h"
 
 class GameLayer
 {
@@ -24,8 +24,8 @@ public:
     Object* GetFirstObject();
 
     Color color;
-    std::string name = "Level";
-    //Camera* cam;
+    std::string name ;//= "Level";
+    //Camera camera;
 
 private:
     std::vector<Object*> m_Entities;

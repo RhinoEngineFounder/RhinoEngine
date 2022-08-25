@@ -29,6 +29,19 @@ typedef struct AppInfo_RE
 
 class Application
 {
+
+protected:
+    AppInfo info;
+    Super* master = new Super();
+    Time time;
+    GameLayer *currentLevel;
+
+private:
+    std::vector<Plugin*> m_plugins;
+
+    bool isRunning = true;
+    friend int ::main(int argc, char** argv);
+
 public:
     Application(AppInfo appinfo)
     {
@@ -56,20 +69,16 @@ public:
 
     void run()
     {
-        uint now = SDL_GetPerformanceCounter();
-        uint last = 0;
-        float deltaTime;
-
         while(isRunning)
         {
-            deltaTime = Super::ComputeDeltaTime(last, now);
+            time.Update();
             if(Input::isKeyPressed(SDL_QUIT))
                 isRunning = false;
                 
-            master->Update(deltaTime);
+            master->Update(time);
 
-            for(Plugin *p : m_plugins)
-                p->Update(deltaTime);
+            //for(Plugin *p : m_plugins)
+            //    p->Update(time.delta());
         }
     }
 
@@ -101,17 +110,6 @@ public:
 
     inline std::vector<Plugin*> GetPlugins() { return m_plugins; }
 
-protected:
-    AppInfo info;
-    Super* master = new Super();
-    //std::vector<GameLayer*> levels;
-    GameLayer *currentLevel;
-
-private:
-    std::vector<Plugin*> m_plugins;
-
-    bool isRunning = true;
-    friend int ::main(int argc, char** argv);
 };
 
 Application* CreateApp(Arguments);
