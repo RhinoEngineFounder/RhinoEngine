@@ -62,11 +62,11 @@ and a box, you can control, if you do something like this in your character:
 ```
 void YourCharacterName::Tick(float deltaTime)
 {
-    if(Input::isKeyHeldDown(KeyCode_d) && !(transform.location.x >= 540)) // Check input and don't let your Player escape!
-        transform.location.x += 0.1 * deltaTime; // Move your character!
+    if(Input::isKeyHeldDown(KeyCode_d) && transform.location.x <= 540) // Check input and don't let your Player escape!
+        transform.location.x += 5; // Move your character!
         
-    if(Input::isKeyHeldDown(KeyCode_a) && !(transform.location.x <= 0))
-        transform.location.x -= 0.1;
+    if(Input::isKeyHeldDown(KeyCode_a) && transform.location.x >= 0)
+        transform.location.x -= 5;
 }
 ```
 ## How to compile your project
