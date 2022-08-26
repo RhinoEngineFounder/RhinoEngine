@@ -24,8 +24,8 @@ public:
     Object* GetFirstObject();
 
     Color color;
-    std::string name ;//= "Level";
-    //Camera camera;
+    std::string name = "Level";
+    Camera camera;
 
 private:
     std::vector<Object*> m_Entities;

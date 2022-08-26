@@ -1,5 +1,4 @@
 #include "Application.h"
-#include "Application.h"
 #include <iostream>
 
 extern Application* CreateApplication(Arguments);

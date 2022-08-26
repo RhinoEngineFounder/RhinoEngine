@@ -1,10 +1,4 @@
 #include "Renderer.h"
-#include <SDL2/SDL_pixels.h>
-#include <SDL2/SDL_rect.h>
-#include <SDL2/SDL_render.h>
-
-// NOTE: Use SDL_FillRects for rendering, but pass the vector of 
-// entities to the rendering function.
 
 Renderer::Renderer(const char *name, int w, int h)
 {
@@ -30,7 +24,7 @@ void Renderer::InitRenderer(Color c)
     this->m_Window = SDL_CreateWindow(this->m_WindowName, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_ScreenWidth, m_ScreenHeight, SDL_WINDOW_SHOWN);
     this->m_Renderer = SDL_CreateRenderer(m_Window, -1, SDL_RENDERER_ACCELERATED);
     this->m_Surface = SDL_GetWindowSurface(m_Window);
-    
+
     // Error checking
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
         std::cerr << "Failed initializing Rendering Engine! (SDL Init failed)\n";
@@ -93,6 +87,7 @@ void Renderer::RenderObjects(std::vector<Object*> objects, Time &time)
                                entity->GetColor().g,
                                entity->GetColor().b,
                                entity->GetColor().a);
+
         SDL_Rect rect = Transform_To_Rect(entity->GetObjectTransform());
 
         switch (entity->GetShape())

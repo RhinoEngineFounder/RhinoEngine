@@ -31,7 +31,6 @@ private:
     const char* m_WindowName;
 
     Color background; // Background color
-    Camera cam;
     SDL_Window* m_Window;
     SDL_Renderer* m_Renderer;
     SDL_Surface* m_Surface;

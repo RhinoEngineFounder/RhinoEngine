@@ -7,7 +7,7 @@
 
 int main(int argc, char** argv);
 
-typedef struct Arguments_RE
+struct Arguments
 {
     int argc;
     char** args;
@@ -17,18 +17,31 @@ typedef struct Arguments_RE
         if(!args) return nullptr;
         return args[index];
     }
-} Arguments;
+};
 
-typedef struct AppInfo_RE
+struct AppInfo
 {
     Arguments arguments;
     std::string workingDirectory;
     std::string name = "RhinoEngine game";
     bool enableGUI = false;
-} AppInfo;
+};
 
 class Application
 {
+public:
+    Application(AppInfo appinfo);
+    ~Application();
+
+    GameLayer* defaultLevel();
+
+    void run();
+    void end();
+    void AddPlugin(Plugin* plug);
+    void RemovePlugin(Plugin* plug);
+
+    inline void SwitchLevel(GameLayer* layer) { master->LoadLevel(layer); }
+    inline std::vector<Plugin*> GetPlugins() { return m_plugins; }
 
 protected:
     AppInfo info;
@@ -41,75 +54,6 @@ private:
 
     bool isRunning = true;
     friend int ::main(int argc, char** argv);
-
-public:
-    Application(AppInfo appinfo)
-    {
-        if(!currentLevel)
-            currentLevel = defaultLevel();
-            
-        info = appinfo;
-        master->Initiate(currentLevel, info.name.c_str());
-        //currentLevel = levels[0];
-    }
-
-    ~Application() {}
-
-    GameLayer* defaultLevel()
-    {
-        GameLayer* result = new GameLayer();
-        Object* o = new Object(FVector(250, 250), FVector(100, 100));
-
-        o->SetColor(Color(255, 255, 255, 1));
-        result->color = Color(0, 0, 255, 1);
-        result->AddObject(o);
-
-        return result;
-    }
-
-    void run()
-    {
-        while(isRunning)
-        {
-            time.Update();
-            if(Input::isKeyPressed(SDL_QUIT))
-                isRunning = false;
-                
-            master->Update(time);
-
-            //for(Plugin *p : m_plugins)
-            //    p->Update(time.delta());
-        }
-    }
-
-    void SwitchLevel(GameLayer* layer)
-    {
-        master->LoadLevel(layer);
-    }
-
-    void end()
-    {
-        for(Object* e : currentLevel->GetEntites())
-            e->End();
-    }
-
-    void AddPlugin(Plugin* plug)
-    {
-        m_plugins.push_back(plug);
-        plug->Awake();
-    }
-
-    void RemovePlugin(Plugin* plug)
-    {
-        if(!plug) return;
-        auto itr = std::find(m_plugins.begin(), m_plugins.end(), plug);
-        if(itr == m_plugins.end()) return;
-        plug->End();
-        m_plugins.erase(itr);
-    }
-
-    inline std::vector<Plugin*> GetPlugins() { return m_plugins; }
-
 };
 
 Application* CreateApp(Arguments);

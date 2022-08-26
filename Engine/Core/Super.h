@@ -12,8 +12,9 @@ class Super
 public:
     void Initiate(GameLayer*, const char*);
     void Update(Time&);
-
     void LoadLevel(GameLayer*);
+
+    //inline VRenderer* GetRenderer() { return renderer; }
 
 private:
     GameLayer* currentLVL;

@@ -18,7 +18,6 @@ void Super::Update(Time &time)
     for (Object *e : currentLVL->GetEntites()) 
     {
         e->Tick(time.delta());
-        //renderer->RenderObject(e, time);
     }
 
     renderer->RenderObjects(currentLVL->GetEntites(), time);
@@ -27,6 +26,7 @@ void Super::Update(Time &time)
 void Super::LoadLevel(GameLayer* layer) 
 {
     currentLVL = layer;
+    currentLVL->camera = layer->camera;
     renderer->ChangeColor(layer->color);
 
     for(Object* e : currentLVL->GetEntites())
